@@ -12,6 +12,10 @@ BUILD_DIR=$1
 VENDOR_DIR="$BUILD_DIR/vendor"
 ENV_DIR=$3
 
+echo $BUILD_DIR
+echo $VENDOR_DIR
+echo $ENV_DIR
+
 # adapted from SectorLabs/heroku-buildpack-git-submodule
 BUILDPACK_SSH_KEY=$(<"$ENV_DIR/BUILDPACK_SSH_KEY")
 
@@ -33,5 +37,6 @@ echo "-----> Installed SSH key from BUILDPACK_SSH_KEY"
 # install the ssh key
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts 2> /dev/null
 cat "$ENV_DIR/BUILDPACK_SSH_KEY" > ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa
 echo >> ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
